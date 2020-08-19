@@ -53,20 +53,21 @@ const pink = {
     c10 :"#c51162"
 }      
 
-
-
-
+//pallete colors in array
 const uiColors = [red ,yellow,green,pink];
 
-function ColorPallete(el,uiColors){
+//selected colors
+var selectedColors = [];
+
+function ColorPallete(el,uiColors,selectedColors){
 
     this.uiColors = uiColors
     this.el = document.querySelector(el);
-    this.color =[];
+    this.color = selectedColors;
     this.displaySidebar=0;
     this.createColor();    
     this.bindEvents();
-
+   
 }   
 
 ColorPallete.prototype.createColor = function(){
@@ -92,12 +93,11 @@ ColorPallete.prototype.createColor = function(){
             var box = document.createElement('div');
             //innerdiv
             var innerdiv =  document.createElement('div');
-
             //copy icon
             var copyIcon = document.createElement("i");
             copyIcon.classList.add("material-icons");
             copyIcon.innerHTML="content_copy";
-            copyIcon.dataset.icon=list[color];
+            copyIcon.dataset.clipboardText=list[color];
 
 
             //add icon
@@ -106,6 +106,7 @@ ColorPallete.prototype.createColor = function(){
             addIcon.innerHTML="add";
             addIcon.dataset.add=list[color];
             
+            
             //append icon to innerdiv
             innerdiv.appendChild(copyIcon);
             innerdiv.appendChild(addIcon);
@@ -113,6 +114,7 @@ ColorPallete.prototype.createColor = function(){
         
             box.classList.add("box");
             box.innerHTML = list[color];
+            box.dataset.colordiv = list[color];
             box.style.backgroundColor = list[color];
             box.appendChild(innerdiv);
             colorSection.appendChild(box);
@@ -127,11 +129,12 @@ ColorPallete.prototype.createColor = function(){
 ColorPallete.prototype.bindEvents = function(){
 
     this.el.addEventListener('click',e => {
-
         e.target.innerHTML === 'add' && this.pushColor(e.target.dataset.add);
         e.target.innerHTML === 'remove' && this.removeColor(e.target.dataset.add);
-        e.target.innerHTML = e.target.innerHTML === 'add' ? "remove":"add";
-      
+
+        if(e.target.dataset.add){
+            e.target.innerHTML = e.target.innerHTML === 'add' ? "remove":"add";
+        }        
     })
 
 }
@@ -146,7 +149,7 @@ ColorPallete.prototype.pushColor = function(col){
     document.getElementById("color").style.marginRight = "250px";
  }
 
- if( this.color.push(col)){
+ if(this.color.push(col)){
 
     this.displayColor(col)
  }
@@ -158,22 +161,20 @@ ColorPallete.prototype.removeColor =function(col){
     this.color.pop(this.color.find(elem => elem === col));
     var removeElement = document.querySelector('div[data-color="'+col+'"]');
     removeElement.remove();
+    localStorage.setItem("selectedColors",selectedColors);    
+
  }
 
 ColorPallete.prototype.displayColor = function(color){
 
-        var sidenav = document.getElementById("sidenav")
+
         var item = document.createElement("div");
         item.classList.add("item_display");
         item.dataset.color = color;
         item.innerHTML=color;
-        sidenav.appendChild(item);   
-       
+        sidenav.appendChild(item);     
+        localStorage.setItem("selectedColors",selectedColors);    
 }
 
-
-new ColorPallete("#color",uiColors)
-
-
-
+new ColorPallete("#color",uiColors,selectedColors)
 
