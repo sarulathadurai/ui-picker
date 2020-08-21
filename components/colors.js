@@ -97,7 +97,7 @@ ColorPallete.prototype.createColor = function(){
             var copyIcon = document.createElement("i");
             copyIcon.classList.add("material-icons");
             copyIcon.innerHTML="content_copy";
-            copyIcon.dataset.clipboardText=list[color];
+            copyIcon.dataset.clipboard=list[color];
 
 
             //add icon
@@ -134,9 +134,10 @@ ColorPallete.prototype.bindEvents = function(){
 
         if(e.target.dataset.add){
             e.target.innerHTML = e.target.innerHTML === 'add' ? "remove":"add";
-        }        
+        }   
+        
+        e.target.dataset.clipboard && this.copyContent(e.target);
     })
-
 }
 
 ColorPallete.prototype.pushColor = function(col){
@@ -175,6 +176,15 @@ ColorPallete.prototype.displayColor = function(color){
         sidenav.appendChild(item);     
         localStorage.setItem("selectedColors",selectedColors);    
 }
+
+ColorPallete.prototype.copyContent = function(content){
+
+    if(navigator.clipboard){
+        let copyItem = content.dataset.clipboard;
+        navigator.clipboard.writeText(copyItem);
+    }
+}
+
 
 new ColorPallete("#color",uiColors,selectedColors)
 

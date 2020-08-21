@@ -6,3 +6,4 @@ $.get("components/navbar.html", function(data){
 $(function(){
     $("#nav").load("../components/navbar.html")
 });
+
