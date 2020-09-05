@@ -67,6 +67,8 @@
 
     margin:3px ;
     box-shadow: 3px 3px 3px rgb(190, 187, 187);
+    border: 1px solid #333;
+    border-radius: 5px;
     padding: 10px;
     text-align: center;
 }

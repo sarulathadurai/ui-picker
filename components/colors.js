@@ -172,6 +172,7 @@ ColorPallete.prototype.displayColor = function(color){
         var item = document.createElement("div");
         item.classList.add("item_display");
         item.dataset.color = color;
+        item.style.background = color;
         item.innerHTML=color;
         sidenav.appendChild(item);     
         localStorage.setItem("selectedColors",selectedColors);    
