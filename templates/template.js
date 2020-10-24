@@ -3,8 +3,8 @@ const s = localStorage.getItem("selectedColors");
 const selected = s.split(",");
 
 
-function sidenav(selected){
-
+function sidenav(selected,el){
+    let copyItem;
     let sidenav = document.getElementById("sidenav");
     sidenav.style.width = "250px";
     document.getElementById("body").style.marginRight = "250px";
@@ -20,16 +20,19 @@ function sidenav(selected){
     sidenav.addEventListener('click', e=>{
 
         if(navigator.clipboard){
-            let copyItem = e.target.dataset.color;
+            copyItem = e.target.dataset.color;
             navigator.clipboard.writeText(copyItem);
 
-            e.target.classList.add("tooltipped") ;
-            e.target.dataset.tooltip = "Copied!" ;
-
         }
-    })
+    });
+
+    let content = document.querySelector(el);
+    content.addEventListener('click',e=>{
+        e.target.style.background = copyItem
+    });
+
 };
 
-sidenav(selected);
+sidenav(selected,"#body");
 
 
