@@ -15,15 +15,33 @@
 
 const yellow = {
     "heading":"Mellow Yellow",
+    c1:"#ffca28",
+    c2:"#ffc107",
+    c3:"#ffb300",
     c4:  " #ffee58", 
     c5:  " #ffeb3b", 
     c6:  "#fbc02d ",
     c7:  "#f9a825 ",
-    c8:  "#f57f17 ",
-    c9:  "#ffff8d ",
     c10: "#ffff00 ",
     c11:  "#ffea00", 
     c12:  "#ffd600", 
+}
+
+const cyan = {
+    "heading":"Cyan",
+    c1:"#b2ebf2",
+    c2:"#80deea", 
+    c3:"#4dd0e1", 
+    c4:"#26c6da", 
+    c5:"#00bcd4", 
+    c6:"#00acc1", 
+    c7:"#0097a7", 
+    c8:"#00838f", 
+    c9:"#006064", 
+    c10:"#84ffff", 
+    c11:"#18ffff", 
+    c12:"#00e5ff", 
+    c13:"#00b8d4", 
 }
 
 const green = {
@@ -51,10 +69,37 @@ const pink = {
     c8 :"#ff4081",
     c9 :"#f50057",
     c10 :"#c51162"
-}      
+} 
 
+const grey = {
+    "heading":"Grey bae",
+    c1:"#cfd8dc", 
+    c2:"#b0bec5", 
+    c3:"#90a4ae", 
+    c4:"#78909c" ,
+    c5:"#607d8b" ,
+    c6:"#455a64" ,
+    c7:"#37474f" ,
+    c8:"#263238" ,
+    c9:"#757575",
+    c10:"#616161",
+}  
+
+const blue = {
+    "heading" : "Gloomy Purple",
+        c1:"#9575cd", 
+        c2:"#7e57c2", 
+        c3:"#673ab7", 
+        c4:"#5e35b1", 
+        c5:"#512da8", 
+        c6:"#4527a0", 
+        c7:"#311b92", 
+        c8:"#b388ff", 
+        c9:"#7c4dff", 
+        c10:"#651fff", 
+}
 //pallete colors in array
-const uiColors = [red ,yellow,green,pink];
+const uiColors = [red ,yellow,blue,green,cyan,pink,grey];
 
 //selected colors
 var selectedColors = [];
